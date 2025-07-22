@@ -29,7 +29,7 @@ enum CryptoSelection: String, CaseIterable, Hashable, Identifiable {
 
 
 struct L2BookView: View {
-    @EnvironmentObject var viewModel: CryptoViewModel
+    @EnvironmentObject var viewModel: L2BookViewModel
     
     var body: some View {
         VStack {
@@ -70,7 +70,16 @@ struct L2BookView: View {
                 }
             }
             .task {
-                await viewModel.fetchL2BookData()
+                viewModel.startPolling()
+                print("started polling")
+            }
+            .onDisappear {
+//                Task {
+//                    viewModel.stopPolling()
+//                    print("Stop polling")
+//                }
+                viewModel.stopPolling()
+
             }
             .onChange(of: viewModel.selectedL2Coin) { _, newValue in
                 Task {
@@ -84,5 +93,5 @@ struct L2BookView: View {
 
 #Preview {
     L2BookView()
-        .environmentObject(CryptoViewModel())
+        .environmentObject(L2BookViewModel())
 }

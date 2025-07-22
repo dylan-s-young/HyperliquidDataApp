@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     /// Mark: Variables & Constants
-    @EnvironmentObject var viewModel: CryptoViewModel
+    @EnvironmentObject var cryptoMidPriceViewModel: CryptoMidPriceViewModel
     
     var body: some View {
         NavigationStack {
@@ -35,7 +35,7 @@ struct HomeView: View {
             .padding(.horizontal)
         }
         .onAppear {
-            viewModel.startPolling()
+            cryptoMidPriceViewModel.startPolling()
         }
     }
 }
@@ -43,5 +43,5 @@ struct HomeView: View {
 
 #Preview {
     HomeView()
-        .environmentObject(CryptoViewModel())
+        .environmentObject(CryptoMidPriceViewModel())
 }

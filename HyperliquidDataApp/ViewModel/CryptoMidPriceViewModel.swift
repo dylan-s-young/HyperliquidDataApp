@@ -6,18 +6,18 @@
 //
 import SwiftUI
 
-class CryptoViewModel: ObservableObject {
+class CryptoMidPriceViewModel: ObservableObject {
     @Published var prices: [String: Double] = [:]
     @Published var searchText: String = ""
     @Published var l2Data: L2BookModel?
     @Published var selectedL2Coin: CryptoSelection = .BTC
     
-    private let service: CryptoPriceFetching
+    private let service: HyperliquidService
     private var timer: PollingTimer?
     private var previousValues: [String: Double] = [:]
     private var blinkingKeys: Set<String> = []
     
-    init(service: CryptoPriceFetching = CryptoPriceService()) {
+    init(service: HyperliquidService = HyperliquidService()) {
         self.service = service
     }
     

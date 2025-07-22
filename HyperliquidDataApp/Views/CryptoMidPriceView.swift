@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CryptoMidPriceView: View {
-    @EnvironmentObject var viewModel: CryptoViewModel
+    @EnvironmentObject var viewModel: CryptoMidPriceViewModel
     
     var body: some View {
         NavigationStack {

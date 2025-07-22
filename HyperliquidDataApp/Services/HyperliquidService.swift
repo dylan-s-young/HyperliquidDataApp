@@ -1,10 +1,10 @@
 //
-//  CryptoPriceService.swift
+//  HyperliquidService.swift
 //  HyperliquidDataApp
 //
 //  Created by Dylan Young on 7/20/25.
 //
-
+ 
 import Foundation
 
 // Define typealias for raw API response
@@ -38,13 +38,13 @@ struct L2BookPostData: Encodable {
 }
 
 // Protocol for fetching crypto prices
-protocol CryptoPriceFetching {
+protocol HyperliquidFetching {
     func fetchPrices() async throws -> CryptoPrices
     func fetchL2BookData(coin: String, numberOfSignificantFigs: Int?, mantissa: Int? ) async throws -> L2BookModel
 }
 
 // Service class to fetch prices from Hyperliquid API
-class CryptoPriceService: CryptoPriceFetching {
+class HyperliquidService: HyperliquidFetching {
     func fetchL2BookData(coin: String,
                          numberOfSignificantFigs: Int?,
                          mantissa: Int? ) async throws -> L2BookModel {
