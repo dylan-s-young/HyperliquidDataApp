@@ -15,6 +15,7 @@ struct HomeView: View {
         NavigationStack {
             VStack {
                 
+                /// L2 Book View
                 NavigationLink {
                     L2BookView()
                 } label: {
@@ -30,9 +31,9 @@ struct HomeView: View {
                         .customButtonBackground(backgroundColor: Color.green)
                 }
             }
+            .navigationTitle("Hyperliquid Data App")
             .padding(.horizontal)
         }
-        .navigationTitle("Hyperliquid Data App")
         .onAppear {
             viewModel.startPolling()
         }

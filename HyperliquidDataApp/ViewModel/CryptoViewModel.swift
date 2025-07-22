@@ -10,6 +10,7 @@ class CryptoViewModel: ObservableObject {
     @Published var prices: [String: Double] = [:]
     @Published var searchText: String = ""
     @Published var l2Data: L2BookModel?
+    @Published var selectedL2Coin: CryptoSelection = .BTC
     
     private let service: CryptoPriceFetching
     private var timer: PollingTimer?
@@ -88,7 +89,7 @@ class CryptoViewModel: ObservableObject {
     }
     
     @MainActor
-    func fetchL2BookData(asset: String = "ETH",
+    func fetchL2BookData(asset: String = "BTC",
                          numberOfSignificantFigs: Int? = nil,
                          mantissa: Int? = nil) async {
         do {
