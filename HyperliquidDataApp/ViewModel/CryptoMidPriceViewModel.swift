@@ -5,6 +5,7 @@
 //  Created by Dylan Young on 7/20/25.
 //
 import SwiftUI
+import Foundation
 
 class CryptoMidPriceViewModel: ObservableObject {
     @Published var prices: [String: Double] = [:]
@@ -12,7 +13,7 @@ class CryptoMidPriceViewModel: ObservableObject {
     @Published var l2Data: L2BookModel?
     @Published var selectedL2Coin: CryptoSelection = .BTC
     
-    private let service: HyperliquidService
+    private let service: HyperliquidFetching
     private var timer: PollingTimer?
     private var previousValues: [String: Double] = [:]
     private var blinkingKeys: Set<String> = []

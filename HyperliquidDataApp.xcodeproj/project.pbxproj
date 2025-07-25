@@ -29,16 +29,6 @@
 		22C54ACE2E2DDA4A00DAF351 /* HyperliquidDataAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HyperliquidDataAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		22049DA22E2E88E000E0FC6C /* Exceptions for "HyperliquidDataAppTests" folder in "HyperliquidDataApp" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				CryptoViewModelTests.swift,
-			);
-			target = 22C54AB62E2DDA4800DAF351 /* HyperliquidDataApp */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		22C54AB92E2DDA4800DAF351 /* HyperliquidDataApp */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
@@ -47,9 +37,6 @@
 		};
 		22C54AC72E2DDA4A00DAF351 /* HyperliquidDataAppTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				22049DA22E2E88E000E0FC6C /* Exceptions for "HyperliquidDataAppTests" folder in "HyperliquidDataApp" target */,
-			);
 			path = HyperliquidDataAppTests;
 			sourceTree = "<group>";
 		};

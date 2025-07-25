@@ -44,7 +44,7 @@ protocol HyperliquidFetching {
 }
 
 // Service class to fetch prices from Hyperliquid API
-class HyperliquidService: HyperliquidFetching {
+final class HyperliquidService: HyperliquidFetching {
     func fetchL2BookData(coin: String,
                          numberOfSignificantFigs: Int?,
                          mantissa: Int? ) async throws -> L2BookModel {
@@ -116,3 +116,7 @@ class HyperliquidService: HyperliquidFetching {
         }
     }
 }
+
+
+
+/// histroical data f

@@ -13,8 +13,23 @@ struct HomeView: View {
     
     var body: some View {
         NavigationStack {
-            VStack {
+            VStack(alignment: .leading) {
                 
+                Text("Websockets")
+                    .font(.title)
+                
+                NavigationLink {
+                    WebSocketView()
+                    
+                } label: {
+                    Text("L2 Book View")
+                        .customButtonBackground(backgroundColor: Color.orange)
+                }
+                
+                Text("Requests")
+                    .font(.title)
+
+
                 /// L2 Book View
                 NavigationLink {
                     L2BookView()
