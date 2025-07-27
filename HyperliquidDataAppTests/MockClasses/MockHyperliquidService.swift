@@ -1,5 +1,5 @@
 //
-//  MockL2BookService .swift
+//  MockHyperliquidService.swift
 //  HyperliquidDataAppTests
 //
 //  Created by Dylan Young on 7/22/25.
@@ -7,6 +7,12 @@
 
 import Foundation
 @testable import HyperliquidDataApp
+
+//enum HyperliquidError: Error, Equatable {
+//    case networkError(String)
+//    case serverError(String)
+//    case invalidData(String)
+//}
 
 class MockHyperliquidService: HyperliquidFetching {
     var mockPrices: [String: Double] = ["BTC": 120000,
@@ -23,8 +29,15 @@ class MockHyperliquidService: HyperliquidFetching {
                                             L2Data(price: "3000.2", size: "1000", n: 3)
                                         ]
                                      ])
+    var shouldThrowInvalidURL: Bool = false
+    var shouldThrowInvalidResponse: Bool = false
+    var shouldThrowDecodingError: Bool = false
+    var shouldThrowInvalidPriceFormat: Bool = false
     
     func fetchPrices() async throws -> [String: Double] {
+        if shouldThrowInvalidURL {
+            throw NetworkError.invalidURL
+        }
         return mockPrices
     }
     

@@ -62,5 +62,15 @@ struct HyperliquidServiceTesting {
         #expect(bookData.levels[0].count == 2, "Bids should still have 2 entries")
         #expect(bookData.levels[1].count == 1, "Asks should still have 1 entry")
     }
+    
+    @Test func testInvalidURl() async throws {
+        
+        mockService.shouldThrowInvalidURL = true
+        
+        await #expect(throws: NetworkError.invalidURL) {
+            try await mockService.fetchPrices()
+        }
+        
+    }
 }
 
