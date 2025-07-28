@@ -86,6 +86,9 @@ struct L2BookView: View {
                     await viewModel.fetchL2BookData(asset: newValue.coinCode)
                 }
             }
+            .refreshable {
+                await viewModel.fetchL2BookData()
+            }
         }
         
     }

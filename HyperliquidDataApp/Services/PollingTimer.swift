@@ -19,7 +19,8 @@ class PollingTimer {
     func start() {
         stop()
         task()
-        timer = Timer.scheduledTimer(withTimeInterval: interval, repeats: true, block: { _ in
+        timer = Timer.scheduledTimer(withTimeInterval: interval, repeats: true, block: { [weak self] _ in
+            guard let self = self else { return }
             self.task()
         })
         

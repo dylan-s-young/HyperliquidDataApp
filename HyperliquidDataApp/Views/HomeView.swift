@@ -22,7 +22,7 @@ struct HomeView: View {
                     WebSocketView()
                     
                 } label: {
-                    Text("L2 Book View")
+                    Text("Hyperliquid Mid Prices")
                         .customButtonBackground(backgroundColor: Color.orange)
                 }
                 

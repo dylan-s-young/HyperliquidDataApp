@@ -4,8 +4,29 @@
 //
 //  Created by Dylan Young on 7/25/25.
 //
-
+import Combine
 import Foundation
+
+enum SubscriptionType: Hashable {
+    case allMids
+    case orderBook(String)
+//    
+//    var payload: String {
+//        switch self {
+//            
+//        case .allMids:
+//            <#code#>
+//        case .orderBook(_):
+//            <#code#>
+//        }
+//    }
+}
+
+
+protocol WebSocketProtocol {
+    func subscribeToWebsocket(_ subscriptionType: SubscriptionType) -> AsyncStream<Result<String, Error>>
+}
+
 
 struct AllMidsResponse: Codable {
     let data: AllMidsData 
@@ -16,8 +37,10 @@ struct AllMidsData: Codable {
 }
 
 
-class AsyncStreamDataProvider {
+class AsyncStreamDataProvider: WebSocketProtocol {
     private var socketConnection: URLSessionWebSocketTask?
+    
+    private var cancellable = Set<AnyCancellable>()
     
     func getAsyncStream() -> AsyncStream<Int> {
         AsyncStream { continuation in
@@ -40,7 +63,7 @@ class AsyncStreamDataProvider {
         }
     }
     
-    func testSubscriptionHyperliquidAllMids() -> AsyncStream<Result<String, Error>> {
+    func subscribeToWebsocket(_ subscriptionType: SubscriptionType) -> AsyncStream<Result<String, Error>> {
         let url = URL(string: "wss://api.hyperliquid.xyz/ws")!
         let subscriptionMessage = """
         {
@@ -92,7 +115,7 @@ class WebSocketViewModel: ObservableObject {
     func startSubscription() {
         isLoading = true
         subscriptionTask = Task {
-            for await result in dataProvider.testSubscriptionHyperliquidAllMids() {
+            for await result in dataProvider.subscribeToWebsocket(.allMids) {
                 switch result {
                 case .success(let message):
                     if let data = message.data(using: .utf8),

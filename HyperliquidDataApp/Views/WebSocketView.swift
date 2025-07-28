@@ -51,7 +51,7 @@ struct PriceRowView: View {
             Text(pair)
                 .bold()
             Spacer()
-            Text(price)
+            Text("$ \(price)")
                 .foregroundColor(currentColor)
         }
         .onChange(of: price) { newPriceString in
