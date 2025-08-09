@@ -178,6 +178,52 @@
             endingLineNumber = "77"
             landmarkName = "body"
             landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "3C99B1D4-D4A0-4A3B-BA6D-A64AB6CAC6D3 - 99481316260a8d68"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for closure #2 () async -&gt; () in closure #2 (Swift.String) -&gt; () in HyperliquidDataApp.PriceRowView.body.getter : some"
+                  moduleName = "HyperliquidDataApp.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dylanyoung/Desktop/code/Learning/iOS/HyperliquidDataApp/HyperliquidDataApp/Views/WebSocketView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "78"
+                  endingLineNumber = "78">
+               </Location>
+               <Location
+                  uuid = "3C99B1D4-D4A0-4A3B-BA6D-A64AB6CAC6D3 - 89f3b07133c07365"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(4) suspend resume partial function for closure #2 () async -&gt; () in closure #2 (Swift.String) -&gt; () in HyperliquidDataApp.PriceRowView.body.getter : some"
+                  moduleName = "HyperliquidDataApp.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dylanyoung/Desktop/code/Learning/iOS/HyperliquidDataApp/HyperliquidDataApp/Views/WebSocketView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "78"
+                  endingLineNumber = "78">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "17C0D04A-4783-427F-81C4-71456040CF64"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HyperliquidDataApp/Services/PollingTimer.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
+            landmarkName = "stop()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

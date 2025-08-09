@@ -28,6 +28,9 @@ struct CryptoMidPriceView: View {
                     }
                 }
             }
+            .onAppear {
+                viewModel.startPolling()
+            }
             .searchable(text: $viewModel.searchText, prompt: "Look for specific asset")
             .navigationTitle("Mid Prices")
         }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-class L2BookViewModel: ObservableObject {
+final class L2BookViewModel: ObservableObject {
     @Published var l2Data: L2BookModel?
     @Published var selectedL2Coin: CryptoSelection = .BTC
     @Published var numberOfSignificantFigs: Int? = nil

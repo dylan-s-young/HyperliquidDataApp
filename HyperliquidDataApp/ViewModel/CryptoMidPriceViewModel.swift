@@ -7,7 +7,7 @@
 import SwiftUI
 import Foundation
 
-class CryptoMidPriceViewModel: ObservableObject {
+final class CryptoMidPriceViewModel: ObservableObject {
     @Published var prices: [String: Double] = [:]
     @Published var searchText: String = ""
     @Published var l2Data: L2BookModel?

@@ -37,10 +37,10 @@ struct AllMidsData: Codable {
 }
 
 
-class AsyncStreamDataProvider: WebSocketProtocol {
+final class AsyncStreamDataProvider: WebSocketProtocol {
     private var socketConnection: URLSessionWebSocketTask?
     
-    private var cancellable = Set<AnyCancellable>()
+//    private var cancellable = Set<AnyCancellable>()
     
     func getAsyncStream() -> AsyncStream<Int> {
         AsyncStream { continuation in
@@ -105,7 +105,7 @@ class AsyncStreamDataProvider: WebSocketProtocol {
     }
 }
 @MainActor
-class WebSocketViewModel: ObservableObject {
+final class WebSocketViewModel: ObservableObject {
     @Published var isLoading: Bool = false
     @Published var prices: [String: String] = [:]
     @Published var errorMessage: String? = nil
