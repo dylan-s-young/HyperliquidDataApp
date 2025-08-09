@@ -11,9 +11,9 @@ struct HyperliquidFeeTile: View {
     @EnvironmentObject var hyperliquidViewModel: HyperliquidViewModel
     
     var body: some View {
-        VStack {
+        VStack(spacing: 16) {
             if hyperliquidViewModel.isLoading {
-                ProgressView()
+//                ProgressView()
             } else {
                 HStack {
                     Text("Fees")
@@ -22,21 +22,27 @@ struct HyperliquidFeeTile: View {
                     
                     Spacer()
                     
-                    Text("24h / 1h")
+                    Text("7D / 24h")
                         .bold()
                         .foregroundColor(.white)
-                    
                 }
                 
-                HStack {
-                    Text("Burn All Time: \(hyperliquidViewModel.metricData("burnAllTime") ?? 0.0)")
-                }
+                Text("\(hyperliquidViewModel.buybackData(.Time7D) ?? "0.0")")
+                    .foregroundColor(.white)
+                    .fontDesign(.monospaced)
+                    .lineLimit(1)
+                
+                
+                Text("\(hyperliquidViewModel.buybackData(.Time24h) ?? "0.0")")
+                    .foregroundColor(.white)
+                    .fontDesign(.monospaced)
+                    .lineLimit(1)
+
             }
             
         }
         .padding()
-//                    .background(Color(hex:"#3054F2"))
-        .background(Color(hex: "#6680F5"))
+        .background(hyperliquidViewModel.isLoading ? nil : Color(hex: "#6680F5"))
         .cornerRadius(7)
     }
 }
