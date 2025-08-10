@@ -82,5 +82,5 @@ struct HomeView: View {
 #Preview {
     HomeView()
         .environmentObject(CryptoMidPriceViewModel())
-        .environmentObject(HyperliquidViewModel(service: ASXNService(api: APIClient())))
+        .environmentObject(HyperliquidViewModel())
 }

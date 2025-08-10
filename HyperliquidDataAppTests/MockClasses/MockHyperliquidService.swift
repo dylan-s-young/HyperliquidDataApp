@@ -32,7 +32,6 @@ class MockHyperliquidService: HyperliquidFetching {
     var shouldThrowInvalidURL: Bool = false
     var shouldThrowInvalidResponse: Bool = false
     var shouldThrowDecodingError: Bool = false
-    var shouldThrowInvalidPriceFormat: Bool = false
     
     func fetchPrices() async throws -> [String: Double] {
         if shouldThrowInvalidURL {

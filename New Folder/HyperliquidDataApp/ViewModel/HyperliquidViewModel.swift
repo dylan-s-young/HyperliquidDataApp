@@ -23,7 +23,7 @@ final class HyperliquidViewModel: ObservableObject {
     private let service: ASXNFetching
     
     // MARK: - Initializer
-    init(service: ASXNFetching) {
+    init(service: ASXNService = ASXNService()) {
         self.service = service
     }
     

@@ -48,10 +48,7 @@ struct HyperliquidFeeTile: View {
 }
 
 #Preview {
-    let api: APIClientProtocol = APIClient()
-    let service: ASXNFetching = ASXNService(api: api)
-
-    let mockViewModel = HyperliquidViewModel(service: service)
+    let mockViewModel = HyperliquidViewModel()
     HyperliquidFeeTile()
         .environmentObject(mockViewModel)
 }
