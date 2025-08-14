@@ -15,7 +15,6 @@ enum HypeBuybackTimeInterval{
 
 @MainActor
 final class HyperliquidViewModel: ObservableObject {
-    @Published var shouldPresentSheet: Bool = false 
     @Published var isLoading: Bool = false
     @Published var hypeMetricData: HypeMetricsModel? = nil
     @Published var hypeBuybackData: [HypeBuybackModel] = []
@@ -24,7 +23,7 @@ final class HyperliquidViewModel: ObservableObject {
     private let service: ASXNFetching
     
     // MARK: - Initializer
-    init(service: ASXNFetching) {
+    init(service: ASXNService = ASXNService()) {
         self.service = service
     }
     
@@ -62,34 +61,7 @@ final class HyperliquidViewModel: ObservableObject {
         }
     }
     
-    // MARK: - Helper function
-    /// Builds chart data by grouping buyback amounts by month, returning models with Date objects sorted chronologically.
-    func buildChartData() -> [HypeBuybackBarChartModel] {
-        let parser = ISO8601DateFormatter()
-        parser.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
-        
-        var calendar = Calendar.current
-        calendar.timeZone = .init(secondsFromGMT: 0) ?? .current
-        
-        // Group buyback amounts by month-year, using the first day of the month as the Date
-        let groupedData = hypeBuybackData.reduce(into: [Date: Double]()) { result, data in
-            guard let date = parser.date(from: data.date),
-                  let amount = Double(data.sz) else {
-                print("Skipping invalid data: date=\(data.date), sz=\(data.sz)")
-                return
-            }
-            // Get the start of the month for grouping
-            let startOfMonth = calendar.startOfMonth(for: date)
-            result[startOfMonth, default: 0.0] += amount
-        }
-        
-        // Transform to chart models and sort by date
-        return groupedData.map { HypeBuybackBarChartModel(date: $0.key, amountBurned: $0.value) }
-            .sorted { $0.date < $1.date }
-    }
-
-    
-    // MARK: - Service functions
+    // MARK: - Servuce functions
     func fetchHypeMetricData() async {
         isLoading = true
         

@@ -25,11 +25,7 @@ struct HomeView: View {
                             .resizable()
                             .scaledToFit()
                         
-                        HyperliquidBuybackTile()
-                            .onTapGesture {
-                                print("Tapped")
-                                hyperliquidViewModel.shouldPresentSheet.toggle()
-                            }
+                        HyperliquidFeeTile()
                         
                         Text("Websockets")
                             .font(.title)
@@ -73,7 +69,6 @@ struct HomeView: View {
                     
                 }
             }
-            
             .onAppear {
                 Task {
                     await hyperliquidViewModel.fetchHypeBuybackData()
@@ -81,14 +76,11 @@ struct HomeView: View {
                 }
             }
         }
-        .sheet(isPresented: $hyperliquidViewModel.shouldPresentSheet) {
-            HyperliquidBuybackDetailedView()
-        }
     }
 }
 
 #Preview {
     HomeView()
         .environmentObject(CryptoMidPriceViewModel())
-        .environmentObject(HyperliquidViewModel(service: ASXNService(api: APIClient())))
+        .environmentObject(HyperliquidViewModel())
 }
