@@ -17,6 +17,11 @@ private extension Endpoint {
     static func makeForASXNEndpoint(_ endpoint: String) -> URL {
         URL(string: "https://api-data.asxn.xyz/api/\(endpoint)")!
     }
+    
+    static func makeForHyperliquidEndpoint(_ endpoint: String) -> URL{
+        URL(string: "https://api.hyperliquid.xyz/info\(endpoint)")!
+    }
+    
 }
 
 extension Endpoint {

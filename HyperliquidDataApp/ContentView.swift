@@ -20,12 +20,17 @@ struct ContentView: View {
     
     var body: some View {
         // TODO: Refactor to a TabView, favorited positions? Or data?
-        VStack {
-            HomeView()
-                .environmentObject(cryptoMidPriceViewModel)
-                .environmentObject(hyperliquidViewModel)
-                .environmentObject(l2BookViewModel)
+        TabView {
+            Tab("", systemImage: "house") {
+                HomeView()
+            }
+            Tab("", systemImage: "gear") {
+                SettingsView()
+            }
         }
+        .environmentObject(cryptoMidPriceViewModel)
+        .environmentObject(hyperliquidViewModel)
+        .environmentObject(l2BookViewModel)
     }
 }
 

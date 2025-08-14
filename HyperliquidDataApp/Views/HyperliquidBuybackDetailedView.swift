@@ -22,10 +22,11 @@ struct HyperliquidBuybackDetailedView: View {
             Text("Burned Amount - denominated in HYPE")
              
             Chart {
+                // TODO: Switch to DI 
                 ForEach(hyperliquidViewModel.buildChartData()) { entry in
                     BarMark(
                         x: .value("Date",entry.date, unit: .month),
-                        y: .value("Amount", entry.amountBurned.toAbbreviatedString())
+                        y: .value("Amount", entry.amountBurned)
                     )
                 }
             }
