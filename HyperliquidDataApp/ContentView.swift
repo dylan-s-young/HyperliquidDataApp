@@ -20,7 +20,6 @@ struct ContentView: View {
     
     var body: some View {
         // TODO: Refactor to a TabView, favorited positions? Or data?
-        
         VStack {
             HomeView()
                 .environmentObject(cryptoMidPriceViewModel)

@@ -24,9 +24,25 @@ protocol APIClientProtocol {
 
 
 final class APIClient: APIClientProtocol {
-    private let session: URLSession = .shared
-    private let decoder = JSONDecoder()
-    private let encoder = JSONEncoder()
+    private let session: URLSession
+    private let decoder: JSONDecoder
+    private let encoder: JSONEncoder
+    
+    init(session: URLSession = URLSession.shared,
+         decoder: JSONDecoder = {
+            let d = JSONDecoder()
+            d.dateDecodingStrategy = .iso8601
+            return d
+         }(),
+         encoder: JSONEncoder = {
+            let e = JSONEncoder()
+            return e
+    }(),
+     ) {
+        self.session = session
+        self.decoder = decoder
+        self.encoder = encoder
+     }
     
     func request<T: Decodable>(
         _ endpoint: URL,
@@ -35,7 +51,7 @@ final class APIClient: APIClientProtocol {
         var request = URLRequest(url: endpoint)
         request.httpMethod = method
         
-        let (data, response) = try await session.data(for: request)
+        let (data, response) = try await self.session.data(for: request)
         
         guard let httpResponse = response as? HTTPURLResponse,
               (200..<300).contains(httpResponse.statusCode) else {
@@ -43,7 +59,7 @@ final class APIClient: APIClientProtocol {
         }
         
         do {
-            return try decoder.decode(T.self, from: data)
+            return try self.decoder.decode(T.self, from: data)
         } catch {
             throw NetworkError.decodingError(error.localizedDescription)
         }

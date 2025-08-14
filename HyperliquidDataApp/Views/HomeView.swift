@@ -25,7 +25,11 @@ struct HomeView: View {
                             .resizable()
                             .scaledToFit()
                         
-                        HyperliquidFeeTile()
+                        HyperliquidBuybackTile()
+                            .onTapGesture {
+                                print("Tapped")
+                                hyperliquidViewModel.shouldPresentSheet.toggle()
+                            }
                         
                         Text("Websockets")
                             .font(.title)
@@ -69,12 +73,16 @@ struct HomeView: View {
                     
                 }
             }
+            
             .onAppear {
                 Task {
                     await hyperliquidViewModel.fetchHypeBuybackData()
                     await hyperliquidViewModel.fetchHypeMetricData()
                 }
             }
+        }
+        .sheet(isPresented: $hyperliquidViewModel.shouldPresentSheet) {
+            HyperliquidBuybackDetailedView()
         }
     }
 }
